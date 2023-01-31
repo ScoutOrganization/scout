@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../public/styles/CreatePost.scss';
 import post from '../public/images/post.jpg';
 
-
 const CreatePost = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -45,78 +44,80 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="container">
-      <div className="photo">
-        <img id="board" src={post}></img>
+    <div className='postContainer'>
+      <div className='photo'>
+        <img id='board' src={post}></img>
       </div>
-      <div className="post">
-      <h1>Create a Post</h1>
-      < br />
-        <label className="label" htmlFor="first">
+      <div className='post'>
+        <h1>Create a Post</h1>
+        <br />
+        <label className='label' htmlFor='first'>
           FIRST NAME
         </label>
-				<br/>
+        <br />
         <textarea
-          id="first"
-          className="input"
+          id='first'
+          className='input'
           onInput={(e) => {
             setFirstName(e.currentTarget.value);
           }}
           value={firstName}
         ></textarea>
         <br />
-        <label className="label" htmlFor="last">
-          LAST NAME 
+        <label className='label' htmlFor='last'>
+          LAST NAME
         </label>
-				<br/>
+        <br />
         <textarea
-          id="last"
-          className="input"
+          id='last'
+          className='input'
           onInput={(e) => {
             setLastName(e.currentTarget.value);
           }}
           value={lastName}
         ></textarea>
         <br />
-        <label className="label" htmlFor="location">
-          LOCATION 
+        <label className='label' htmlFor='location'>
+          LOCATION
         </label>
-				<br/>
+        <br />
         <textarea
-          id="location"
-          className="input"
+          id='location'
+          className='input'
           onInput={(e) => {
             setLocation(e.currentTarget.value);
           }}
           value={location}
         ></textarea>
         <br />
-        <label className="label" htmlFor="item">
-          ITEM LOST 
+        <label className='label' htmlFor='item'>
+          ITEM LOST
         </label>
-				<br/>
+        <br />
         <textarea
-          id="item"
-          className="input"
+          id='item'
+          className='input'
           onInput={(e) => {
             setItemName(e.currentTarget.value);
           }}
           value={itemName}
         ></textarea>
         <br />
-        <label className="label" htmlFor="details">
-          ADDITIONAL INFORMATION 
+        <label className='label' htmlFor='details'>
+          ADDITIONAL INFORMATION
         </label>
-				<br/>
+        <br />
         <textarea
-          id="details"
+          id='details'
           onInput={(e) => {
             setDetails(e.currentTarget.value);
           }}
           value={details}
         ></textarea>
         <br />
-        <button id="button"  onClick={submitForm}>POST</button>
+        <button id='button' onClick={submitForm}>
+          POST
+        </button>
       </div>
     </div>
   );

@@ -8,10 +8,10 @@ export default function Bulletin() {
   // set interval to grab the latest data
 
   return (
-    <div className='container'>
+    <div className='bulletinContainer'>
       <NavBar />
       <h1>Bulletin Board</h1>
-      <div className='bulletinContainer'>
+      <div className='bulletinWrapper'>
         <div className='locationWrapper'>Location</div>
         <div className='postContainer'>
           <div className='postWrapper'>Posts will go here</div>

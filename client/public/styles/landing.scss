@@ -1,38 +1,39 @@
 body {
   margin: 0;
   background-color: #efefee;
-  color: #221d1d; 
-    h1 {
-      margin: 1rem;
-      font-family: 'DM Serif Display', serif;
-      font-size: 6rem;  
-    }
-    h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;  
-      margin: .25rem;
-    }
-    h3 {
-      margin: .25rem; 
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;  
-    }
+  color: #221d1d;
+  h1 {
+    margin: 1rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: 6rem;
+  }
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin: 0.25rem;
+  }
+  h3 {
+    margin: 0.25rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+  }
 }
 
 .landingContainer {
-  display: grid;  
-  grid-template-columns: 1fr 1fr; 
-  grid-template-areas: 
-  "left right"
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'left right';
 }
 
 .left {
-  margin: auto; 
-  padding-bottom: .66vh; 
-  padding-right: 2rem; 
-  padding-left: 2rem; 
+  margin: auto;
+  padding-bottom: 0.66vh;
+  padding-right: 2rem;
+  padding-left: 2rem;
   text-align: center;
   grid-area: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .right {
@@ -56,7 +57,7 @@ body {
 }
 
 .startBtn:after {
-  content: "";
+  content: '';
   background-color: #ffe54c;
   width: 100%;
   z-index: -1;
