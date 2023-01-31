@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../public/styles/landing.scss';
 import sunglasses from '../public/images/sunglasses.jpg';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useHistory } from 'react-router-dom';
 
 export default function Landing() {
-  const { loginWithRedirect } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
+  const [button, setButton] = useState('GET STARTED'); 
+  const history = useHistory(); 
+
+  function handleLogin() {
+    loginWithRedirect(); 
+  }
+
+  console.log(user); 
+
+  useEffect(() => {
+    if (user) {
+      setButton('GO TO BULLETIN BOARD'); 
+    } else {
+      setButton('GET STARTED');
+    }
+  }, [user])
+  
   return (
     <div className='landingContainer'>
       <div className='right'>
@@ -26,8 +44,8 @@ export default function Landing() {
           mission to make the world a little less lost.
         </h3>
         <br /> <br />
-        <button className='startBtn' onClick={() => loginWithRedirect()}>
-          GET STARTED
+        <button className='startBtn' onClick={() => !user ? handleLogin() : history.push('/bulletin')}>
+          {button}
         </button>
       </div>
     </div>
