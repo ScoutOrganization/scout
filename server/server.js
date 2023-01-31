@@ -4,6 +4,7 @@ const path = require('path');
 const PORT = 3000;
 // const apiRouter = require('./routes/api');
 const cors = require('cors');
+const postController = require('./controllers/postController');
 
 // parses JSON from incoming request
 app.use(express.json());
@@ -17,6 +18,21 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 // app.use('/api', apiRouter, (req, res) => {
 //     return res.status(200);
 //     });
+app.get('/bulletin', postController.getAllPosts, (req, res, next) => {
+  return res.status(200).json(res.locals.allPosts);
+});
+
+app.get('/userPosts', postController.getUserPosts, (req, res, next) => {
+  return res.status(200).json(res.locals.userPosts);
+});
+
+app.post('/createPost', postController.createPost, (req, res, next) => {
+  return res.status(201).json(res.locals);
+});
+
+app.delete('/userPosts', postController.deletePost, (req, res, next) => {
+  return res.status(200).json(res.locals);
+});
 
 // catch-all error handler
 app.get('*', (req, res) => {
