@@ -18,10 +18,20 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 // app.use('/api', apiRouter, (req, res) => {
 //     return res.status(200);
 //     });
-console.log('in the server');
-app.get('/bulletin/feed', postController.getPosts, (req, res, next) => {
-  console.log('hey');
+app.get('/bulletin', postController.getAllPosts, (req, res, next) => {
   return res.status(200).json(res.locals.allPosts);
+});
+
+app.get('/userPosts', postController.getUserPosts, (req, res, next) => {
+  return res.status(200).json(res.locals.userPosts);
+});
+
+app.post('/createPost', postController.createPost, (req, res, next) => {
+  return res.status(201).json(res.locals);
+});
+
+app.delete('/userPosts', postController.deletePost, (req, res, next) => {
+  return res.status(200).json(res.locals);
 });
 
 // catch-all error handler
