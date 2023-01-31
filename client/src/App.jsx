@@ -1,15 +1,20 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Landing from './Landing'; 
-import CreatePost from './CreatePost'; 
-import Bulletin from './Bulletin'; 
-export default function App() {
+import { Switch, Route, BrowserRouter} from 'react-router-dom';
+import Landing from './Landing';
+import CreatePost from './CreatePost';
+import Bulletin from './Bulletin';
 
-    return (
-      <Switch>
-        <Route path="/" component={<Landing />} />
-        <Route path="/createpost" component={<CreatePost />} />
-        <Route path="/bulletin" component={<Bulletin />} />
-      </Switch>
-    )
-};
+export default function App() {
+  return (
+    <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Landing}>
+      </Route>
+      <Route path="/createpost" component={CreatePost}>
+      </Route>
+      <Route path="/bulletin" component={Bulletin}>
+      </Route>
+    </Switch>
+  </BrowserRouter>
+  )
+}
