@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../public/styles/landing.scss';
 import sunglasses from '../public/images/sunglasses.jpg';
+import scout from '../public/images/scout.png';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
 
@@ -31,7 +32,7 @@ export default function Landing() {
 
       <div className='left'>
         <h3>WELCOME TO</h3>
-        <h1>Scout</h1>
+        <img id='scout' src={scout}></img>
         <h3>
           Welcome to Scout, the community-driven platform that helps reunite
           people with their lost belongings. Our mission is to make it easier
