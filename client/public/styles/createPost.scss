@@ -1,18 +1,17 @@
 h1 {
   margin: 1rem;
   font-family: 'DM Serif Display', serif;
-  font-size: 5rem;  
-  color: #221d1d; 
-
+  font-size: 5rem;
+  color: #221d1d;
 }
 
 .label {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
-  color: #221d1d; 
+  color: #221d1d;
 }
 
-.container {
+.postContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 'left right';
