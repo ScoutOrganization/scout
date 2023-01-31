@@ -4,6 +4,7 @@ const path = require('path');
 const PORT = 3000;
 // const apiRouter = require('./routes/api');
 const cors = require('cors');
+const postController = require('./controllers/postController');
 
 // parses JSON from incoming request
 app.use(express.json());
@@ -17,6 +18,11 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 // app.use('/api', apiRouter, (req, res) => {
 //     return res.status(200);
 //     });
+console.log('in the server');
+app.get('/bulletin/feed', postController.getPosts, (req, res, next) => {
+  console.log('hey');
+  return res.status(200).json(res.locals.allPosts);
+});
 
 // catch-all error handler
 app.get('*', (req, res) => {
