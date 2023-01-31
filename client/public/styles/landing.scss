@@ -19,6 +19,12 @@ body {
   }
 }
 
+#scout {
+  width: 20rem;
+  margin: 3rem;
+  align-self: center; 
+}
+
 .landingContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -41,6 +47,8 @@ body {
 }
 
 .startBtn {
+  align-self: center; 
+  width: fit-content; 
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: 200;

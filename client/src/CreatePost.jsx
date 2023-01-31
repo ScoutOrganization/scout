@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../public/styles/CreatePost.scss';
 import post from '../public/images/post.jpg';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const CreatePost = () => {
   const [firstName, setFirstName] = useState('');
@@ -8,7 +9,9 @@ const CreatePost = () => {
   const [itemName, setItemName] = useState('');
   const [location, setLocation] = useState('');
   const [details, setDetails] = useState('');
+  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
 
+  console.log(user); 
   const submitForm = () => {
     const requestBody = {
       firstName,
