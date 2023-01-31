@@ -38,6 +38,17 @@ module.exports = {
         use: 'babel-loader',
       },
       {
+        test: /\.(jpe?g|gif|png|svg)$/i,
+        use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 10000
+          }
+        }
+      ]
+    },
+      {
         test: /.(css|scss)$/,
         exclude: [/node_modules/, /client\/stylesheets\/modules/],
         use: ['style-loader', 'css-loader', 'sass-loader'],
