@@ -1,6 +1,7 @@
 import React from 'react';
 import '../public/styles/landing.scss';
 import sunglasses from '../public/images/sunglasses.jpg';
+
 export default function Landing() {
   return (
     <div className='landingContainer'>
