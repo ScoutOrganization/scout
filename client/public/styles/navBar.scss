@@ -1,0 +1,27 @@
+.navBarContainer {
+  display: flex;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  justify-content: center;
+  background-color: #dee2e6;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.spacer {
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  float: left;
+  padding-left: 3rem;
+}
+
+#logo {
+  height: 4rem;
+  width: auto;
+}
