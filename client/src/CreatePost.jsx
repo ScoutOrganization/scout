@@ -5,7 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { TiArrowBackOutline } from 'react-icons/ti';
-import navigateBack from '../public/images/navigateBack.png';
+import backImg from '../public/images/backImg.png'
 
 const CreatePost = () => {
   const [firstName, setFirstName] = useState('');
@@ -151,13 +151,12 @@ const CreatePost = () => {
           <button id='button' onClick={submitForm}>
             POST
           </button>
-
-          <div id='navigateBack'>
+          <div className='backWrapper'>
             <button
-              id='backToBulletin'
+              id='one'
               onClick={() => history.push('/bulletin')}
             >
-              <img id='backToBulletinImg' src={navigateBack} />
+              <img id='backImage' src={backImg} />
             </button>
           </div>
         </div>
