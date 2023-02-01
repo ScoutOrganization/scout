@@ -5,7 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const CreatePost =  () => {
+const CreatePost = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [itemName, setItemName] = useState('');
@@ -13,33 +13,61 @@ const CreatePost =  () => {
   const [details, setDetails] = useState('');
   const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
   const history = useHistory();
+  //set a new state variable to check if user has inputted info correctly
+  // const [isValid, setIsValid] = useState(false);
+  const [showErrorMessage, setErrorMessage] = useState({
+    show: false,
+    text: '',
+  });
 
+  const resetErrorMessage = () => {
+    setTimeout(() => setErrorMessage({ show: false, text: '' }), 3000);
+  };
 
   const submitForm = async () => {
-    const requestBody = {
-      email: user.email,
-      first_name: firstName,
-      last_name: lastName,
-      item_lost: itemName,
-      location,
-      item_description: details,
-    };
-    
-    const sendPost = async () => {
-      try {
-        await axios.post('http://localhost:3000/createPost', requestBody); 
-      } catch (err) {
-        console.log('unsuccessful post');
-      }
-    }
-    sendPost();
+    if (
+      firstName === '' ||
+      lastName === '' ||
+      itemName === '' ||
+      details === ''
+    ) {
+      setErrorMessage({
+        show: true,
+        text: 'All fields must not be blank.',
+      });
+      resetErrorMessage();
+    } else if (location.length !== 5) {
+      setErrorMessage({
+        show: true,
+        text: 'Please enter a valid 5 digit ZIP code.',
+      });
+      resetErrorMessage();
+    } else {
+      const requestBody = {
+        email: user.email,
+        first_name: firstName,
+        last_name: lastName,
+        item_lost: itemName,
+        location,
+        item_description: details,
+      };
 
-    setFirstName('');
-    setLastName('');
-    setItemName('');
-    setLocation('');
-    setDetails('');
-    history.push('/bulletin')
+      const sendPost = async () => {
+        try {
+          await axios.post('http://localhost:3000/createPost', requestBody);
+        } catch (err) {
+          console.log('unsuccessful post');
+        }
+      };
+      sendPost();
+
+      setFirstName('');
+      setLastName('');
+      setItemName('');
+      setLocation('');
+      setDetails('');
+      history.push('/bulletin');
+    }
   };
   if (user) {
     return (
@@ -116,6 +144,8 @@ const CreatePost =  () => {
             value={details}
           ></textarea>
           <br />
+          <p className='errorMessage'>{showErrorMessage.text}</p>
+
           <button id='button' onClick={submitForm}>
             POST
           </button>
