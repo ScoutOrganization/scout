@@ -38,7 +38,7 @@ app.delete('/userPosts', postController.deletePost, (req, res, next) => {
   return res.status(200).json(res.locals);
 });
 
-app.put(
+app.post(
   '/updateDescription',
   postController.updateDescription,
   (req, res, next) => {

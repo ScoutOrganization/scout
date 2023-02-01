@@ -108,6 +108,7 @@ postController.deletePost = async (req, res, next) => {
 postController.updateDescription = async (req, res, next) => {
   try {
     const { description, postID } = req.body;
+    console.log(req.body);
     //first check current status of _id row element
     //if status is true, change it to false, vice vera
     const statusUpdateQuery = {

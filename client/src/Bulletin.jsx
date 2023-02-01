@@ -21,7 +21,6 @@ export default function Bulletin() {
   async function getPosts() {
     try {
       const response = await axios.get('http://localhost:3000/bulletin');
-      console.log('response', response)
       setPosts([...response.data.reverse()]);
     } catch (err) {
       console.log('no posts recieved');
