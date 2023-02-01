@@ -22,6 +22,10 @@ app.get('/bulletin', postController.getAllPosts, (req, res, next) => {
   return res.status(200).json(res.locals.allPosts);
 });
 
+app.get('/filter', postController.filterPosts, (req, res, next) => {
+  return res.status(200).json(res.locals.filteredPosts);
+});
+
 app.get('/userPosts', postController.getUserPosts, (req, res, next) => {
   return res.status(200).json(res.locals.userPosts);
 });
@@ -35,8 +39,9 @@ app.delete('/userPosts', postController.deletePost, (req, res, next) => {
 });
 
 app.put('/updateStatus', postController.updateStatus, (req, res, next) => {
-  return res.status(200).json(res.locals);u
-})
+  return res.status(200).json(res.locals);
+  u;
+});
 
 // catch-all error handler
 app.get('*', (req, res) => {

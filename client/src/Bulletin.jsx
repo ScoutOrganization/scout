@@ -6,29 +6,41 @@ import Post from './Post';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-
 export default function Bulletin() {
   const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
-  const [location, setLocation] = useState('');
-  const [posts, setPosts] = useState([]); 
-  const history = useHistory(); 
+  const [posts, setPosts] = useState([]);
+  const history = useHistory();
+  let location;
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    setLocation(event.target[0].value);
+    location = event.target[0].value;
+    filterPosts();
+  }
+
+  async function getPosts() {
+    try {
+      const response = await axios.get('http://localhost:3000/bulletin');
+      setPosts([...response.data]);
+    } catch (err) {
+      console.log('no posts recieved');
+    }
   }
 
   useEffect(() => {
-    async function getPosts() {
-      try {
-        const response = await axios.get('http://localhost:3000/bulletin');
-        setPosts([...response.data]); 
-      } catch (err) {
-        console.log('no posts recieved');
-      }
+    getPosts();
+  }, []);
+
+  async function filterPosts() {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/filter?location=${location}`
+      );
+      setPosts([...response.data]);
+    } catch (err) {
+      console.log('no posts recieved');
     }
-    getPosts(); 
-  }, []); 
+  }
 
   return (
     <div className='bulletinContainer'>
@@ -45,8 +57,25 @@ export default function Bulletin() {
               Filter
             </button>
           </form>
-          <div id='createPostContainer'> 
-            <button className='bulletinBtn' type='button' onClick={() => {history.push('/createPost')}}>CREATE POST </button>
+          <div id='createPostContainer'>
+            <button
+              className='bulletinBtn'
+              type='button'
+              onClick={() => {
+                getPosts();
+              }}
+            >
+              REFRESH{' '}
+            </button>
+            <button
+              className='bulletinBtn'
+              type='button'
+              onClick={() => {
+                history.push('/createPost');
+              }}
+            >
+              CREATE POST{' '}
+            </button>
           </div>
         </div>
         <div className='allPostsContainer'>
