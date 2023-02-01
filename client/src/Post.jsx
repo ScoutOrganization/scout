@@ -18,7 +18,7 @@ export default function Post({posts}) {
       } = post
       return (
         <div className='postWrapper' key={_id}>
-          Full Name: {(first_name, last_name)} <br />
+          Full Name: {(first_name + ' ' + last_name)} <br />
           Item Lost: {item_lost} <br />
           Location: {location} <br />
           Item Description: {item_description} <br />
