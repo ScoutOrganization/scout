@@ -33,13 +33,21 @@
 }
 
 #logout {
-  margin: 1rem; 
+  margin: 1rem;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+  overflow-wrap: anywhere;
+  text-align: left;
 }
 
 #userPhoto {
-  margin: 1rem; 
-  width: 3vw; 
-  height: auto; 
+  margin: 1rem;
+  width: 3vw;
+  height: auto;
 }
 
 #profileBtn {

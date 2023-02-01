@@ -2,36 +2,74 @@
   display: flex;
   flex-direction: column;
   font-size: 3rem;
-  margin: 1rem; 
-  border: solid ; 
+  margin: 1rem;
+  border: solid;
   font-family: 'Montserrat', sans-serif;
-  padding: 1rem; 
-  font-size: .9rem; 
+  padding: 1rem;
+  font-size: 0.9rem;
   line-height: 2rem;
+  margin: 1rem;
+  border: .5px solid;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
 #userNickname {
   font-family: 'Montserrat', sans-serif;
-  font-size:'1rem';
+  font-size: '1rem';
 }
 
 #userEmail {
   font-family: 'Montserrat', sans-serif;
-  font-size:'1rem';
+  font-size: '1rem';
 }
 
 .buttonContainer {
-  display: flex; 
-  margin: .5rem;   
+  display: flex;
+  margin: 0.5rem;
   justify-content: flex-end;
 }
 
 #foundBtn {
-  font-family: 'Montserrat', sans-serif;
+  --b: 3px;
+  --s: 0.45em;
+  --color: #373b44;
+
+  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #0000 90deg,
+      var(--color) 0
+    )
+    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
+    calc(100% - var(--b) - 2 * var(--_p));
+  transition: 0.3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: 0.6em;
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: .5rem;
-  font-size: 1rem;
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#foundBtn:hover,
+#foundBtn:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: 0.05em;
+}
+
+#foundBtn:active {
+  background: var(--color);
+  color: #fff;
 }

@@ -93,6 +93,30 @@ textarea {
 }
 
 .errorMessage {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
   color: red;
-  text-decoration: bold;
+}
+
+#backImage {
+  
+  width: 10rem;
+  height: auto;
+}
+#backImage:hover {
+  transform: rotate(3deg);
+}
+
+#one{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+  overflow-wrap: anywhere;
+  text-align: left;
 }

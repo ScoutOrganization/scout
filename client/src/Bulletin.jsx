@@ -21,7 +21,8 @@ export default function Bulletin() {
   async function getPosts() {
     try {
       const response = await axios.get('http://localhost:3000/bulletin');
-      setPosts([...response.data]);
+      console.log('response', response)
+      setPosts([...response.data.reverse()]);
     } catch (err) {
       console.log('no posts recieved');
     }
@@ -29,14 +30,14 @@ export default function Bulletin() {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [posts]);
 
   async function filterPosts() {
     try {
       const response = await axios.get(
         `http://localhost:3000/filter?location=${location}`
       );
-      setPosts([...response.data]);
+      setPosts([...response.data.reverse()]);
     } catch (err) {
       console.log('no posts recieved');
     }
@@ -53,20 +54,22 @@ export default function Bulletin() {
             <br />
             <input id='locationInput' type='text'></input>
             <br />
-            <button className='bulletinBtn' type='submit' role='button'>
-              Filter
-            </button>
+            <div className='bulletinDuoBtn'>
+              <button className='bulletinBtn' type='submit' role='button'>
+                Filter
+              </button>
+              <button
+                className='bulletinBtn'
+                type='button'
+                onClick={() => {
+                  getPosts();
+                }}
+              >
+                REFRESH
+              </button>
+            </div>
           </form>
           <div id='createPostContainer'>
-            <button
-              className='bulletinBtn'
-              type='button'
-              onClick={() => {
-                getPosts();
-              }}
-            >
-              REFRESH{' '}
-            </button>
             <button
               className='bulletinBtn'
               type='button'
@@ -74,7 +77,7 @@ export default function Bulletin() {
                 history.push('/createPost');
               }}
             >
-              CREATE POST{' '}
+              CREATE POST
             </button>
           </div>
         </div>
