@@ -74,6 +74,7 @@ postController.deletePost = async (req, res, next) => {
     //check to see that the username of the user currently trying to delete the post, matches user
     //who created that post
     const { postID } = req.body;
+    console.log('id in server', postID); 
     const deletePostQuery = {
       text: `DELETE FROM posts WHERE(_id = $1)`,
       values: [postID],

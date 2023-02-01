@@ -5,8 +5,9 @@
   margin: 1rem; 
   border: solid ; 
   font-family: 'Montserrat', sans-serif;
+  padding: 1rem; 
   font-size: .9rem; 
-
+  line-height: 2rem;
 }
 
 #userNickname {
@@ -19,3 +20,18 @@
   font-size:'1rem';
 }
 
+.buttonContainer {
+  display: flex; 
+  margin: .5rem;   
+  justify-content: flex-end;
+}
+
+#foundBtn {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: .5rem;
+  font-size: 1rem;
+}

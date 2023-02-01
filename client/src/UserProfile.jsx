@@ -6,11 +6,11 @@ import '../public/styles/profile.scss';
 import UserPosts from './UserPosts';
 
 export default function Profile() {
-  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
+  const { user } = useAuth0();
   const [userPosts, setUserPosts] = useState([]);
   const [userPicture, setUserPicture] = useState('');
   const [nickname, setNickname] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');  
   
   useEffect(() => {
     async function getUserPosts() {
@@ -19,7 +19,6 @@ export default function Profile() {
           setUserPicture(user.picture); 
           setNickname(user.nickname)
           setEmail(user.email);
-          console.log(user.email)
           const response = await axios.get('http://localhost:3000/userPosts?email=' + user.email);
           setUserPosts([...response.data]);
         }
@@ -28,7 +27,7 @@ export default function Profile() {
       }
     }
     getUserPosts();
-  }, [user]);
+  }, [user, userPosts]);
 
   return (
     <div className='profileContainer'>
@@ -41,7 +40,7 @@ export default function Profile() {
           <div id='userEmail'>{email}</div>
         </div>
         <div className='profile-right'>
-          <UserPosts userPosts = {userPosts} />
+          <UserPosts userPosts={userPosts} />
         </div>
       </div>
     </div>
