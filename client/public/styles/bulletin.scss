@@ -14,6 +14,9 @@
   grid-area: post;
   width: 50vw;
   height: 100vh;
+  margin-left: 5.5rem;
+  overflow-y: scroll;
+  line-height: 2rem;
 }
 
 .locationWrapper {
@@ -22,9 +25,10 @@
   grid-area: location;
   text-align: center; 
   line-height: 3rem; 
+  margin-left: 2rem;
 }
 
-#submitLocation {
+.bulletinBtn {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   letter-spacing: 2px;
@@ -40,9 +44,10 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   width: fit-content;
+  margin-top: 1rem;
 }
 
-#submitLocation:active {
+.bulletinBtn:active {
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;
@@ -53,11 +58,17 @@
 }
 
 @media (min-width: 768px) {
-  #submitLocation {
+  .bulletinBtn {
     padding: 0.25em 0.75em;
   }
 }
 
 h1 {
   text-align: center; 
+}
+
+#createPostContainer {
+  border-top: solid; 
+  font-size: 1.5rem;
+  margin-top: 1rem; 
 }
