@@ -34,6 +34,10 @@ app.delete('/userPosts', postController.deletePost, (req, res, next) => {
   return res.status(200).json(res.locals);
 });
 
+app.put('/updateStatus', postController.updateStatus, (req, res, next) => {
+  return res.status(200).json(res.locals);u
+})
+
 // catch-all error handler
 app.get('*', (req, res) => {
   return res.status(404).send("This is not the page you're looking for...");
