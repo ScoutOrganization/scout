@@ -105,22 +105,17 @@ postController.deletePost = async (req, res, next) => {
   }
 };
 
-postController.updateStatus = async (req, res, next) => {
+postController.updateDescription = async (req, res, next) => {
   try {
-    const { _id } = req.body;
+    const { description, postID } = req.body;
     //first check current status of _id row element
     //if status is true, change it to false, vice vera
-    const checkStatus = {
-      text: `SELECT status FROM posts WHERE(_id = $1)`,
-      values: [_id],
-    };
-    const { rows } = await db.query(checkStatus);
     const statusUpdateQuery = {
-      text: `UPDATE posts SET status = ${!rows[0].status} WHERE(_id = $1)`,
-      values: [_id],
+      text: `UPDATE posts SET item_description = $1 WHERE(_id = $2)`,
+      values: [description, postID],
     };
     await db.query(statusUpdateQuery);
-    res.locals.status = !rows[0].status;
+    res.locals.description = description;
     return next();
   } catch (err) {
     return {
