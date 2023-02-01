@@ -53,20 +53,22 @@ export default function Bulletin() {
             <br />
             <input id='locationInput' type='text'></input>
             <br />
-            <button className='bulletinBtn' type='submit' role='button'>
-              Filter
-            </button>
+            <div className='bulletinDuoBtn'>
+              <button className='bulletinBtn' type='submit' role='button'>
+                Filter
+              </button>
+              <button
+                className='bulletinBtn'
+                type='button'
+                onClick={() => {
+                  getPosts();
+                }}
+              >
+                REFRESH
+              </button>
+            </div>
           </form>
           <div id='createPostContainer'>
-            <button
-              className='bulletinBtn'
-              type='button'
-              onClick={() => {
-                getPosts();
-              }}
-            >
-              REFRESH{' '}
-            </button>
             <button
               className='bulletinBtn'
               type='button'
@@ -74,7 +76,7 @@ export default function Bulletin() {
                 history.push('/createPost');
               }}
             >
-              CREATE POST{' '}
+              CREATE POST
             </button>
           </div>
         </div>

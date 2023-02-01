@@ -10,6 +10,7 @@
 }
 
 .allPostsContainer {
+  background-color: white;
   border: solid;
   grid-area: post;
   width: 50vw;
@@ -23,13 +24,14 @@
   font-family: 'Montserrat', sans-serif;
   margin: 1rem;
   grid-area: location;
-  text-align: center; 
-  line-height: 3rem; 
+  text-align: center;
+  line-height: 3rem;
   margin-left: 2rem;
 }
 
 .bulletinBtn {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  background-color: white;
   font-size: 16px;
   letter-spacing: 2px;
   text-decoration: none;
@@ -38,7 +40,8 @@
   cursor: pointer;
   border: 3px solid;
   padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
   position: relative;
   user-select: none;
   -webkit-user-select: none;
@@ -53,8 +56,12 @@
   left: 5px;
 }
 
-#locationLabel {
-  font-size: 1.5rem;
+.bulletinDuoBtn {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -63,12 +70,16 @@
   }
 }
 
+#locationLabel {
+  font-size: 1.5rem;
+}
+
 h1 {
-  text-align: center; 
+  text-align: center;
 }
 
 #createPostContainer {
-  border-top: solid; 
+  border-top: solid;
   font-size: 1.5rem;
-  margin-top: 1rem; 
+  margin-top: 1rem;
 }
