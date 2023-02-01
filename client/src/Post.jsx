@@ -17,10 +17,10 @@ export default function Post({posts}) {
       return (
         <div className='postWrapper' key={_id}>
           Full Name: {(first_name + ' ' + last_name)} <br />
-          Item Lost: {item_lost} <br />
+          Contact: {email}<br />
           Location: {location} <br />
-          Item Description: {item_description} <br />
-          Contact: {email}
+          Item Lost: {item_lost} <br />
+          Additional Details: {item_description} <br />
         </div>
       )
     })}

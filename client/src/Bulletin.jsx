@@ -21,7 +21,8 @@ export default function Bulletin() {
   async function getPosts() {
     try {
       const response = await axios.get('http://localhost:3000/bulletin');
-      setPosts([...response.data]);
+      console.log('response', response)
+      setPosts([...response.data.reverse()]);
     } catch (err) {
       console.log('no posts recieved');
     }
@@ -29,14 +30,14 @@ export default function Bulletin() {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [posts]);
 
   async function filterPosts() {
     try {
       const response = await axios.get(
         `http://localhost:3000/filter?location=${location}`
       );
-      setPosts([...response.data]);
+      setPosts([...response.data.reverse()]);
     } catch (err) {
       console.log('no posts recieved');
     }
