@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import '../public/styles/userPosts.scss';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
+import { RiContactsBookLine, RiDeleteBin5Fill } from 'react-icons/ri';
 import axios from 'axios';
 import EdiText from 'react-editext';
 
-// import { useAuth0 } from '@auth0/auth0-react';
-
 export default function UserPosts({ userPosts }) {
+  const [currentID, setCurrentID] = useState('');
+
   async function handleDeletePost(postID) {
     await axios.delete('http://localhost:3000/userPosts', {
       data: { postID: postID },
     });
   }
 
-  async function updateDescription(val) {
-    await axios.post('http://localhost:3000/updateDescription', {
-      data: { item_description: val },
-    });
+  async function updateDescription(val, postID) {
+    try {
+      const requestBody = {
+        description: val,
+        postID: postID,
+      };
+      console.log('hit');
+      await axios.post('http://localhost:3000/updateDescription', requestBody);
+    } catch (err) {
+      console.log('could not make edit');
+    }
   }
 
   return (
@@ -41,7 +48,9 @@ export default function UserPosts({ userPosts }) {
             <EdiText
               type='text'
               value={item_description}
-              onSave={updateDescription}
+              onSave={(value) => {
+                updateDescription(value, _id);
+              }}
             />
             <br />
             <div className='buttonContainer'>
