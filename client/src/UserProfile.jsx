@@ -9,9 +9,9 @@ import { useHistory } from 'react-router-dom';
 export default function Profile() {
   const history = useHistory();
   const { user } = useAuth0();
+  const [userFullName, setUserFullName] = useState('');
   const [userPosts, setUserPosts] = useState([]);
   const [userPicture, setUserPicture] = useState('');
-  const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
 
   useEffect(() => {
@@ -19,8 +19,14 @@ export default function Profile() {
       try {
         if (user) {
           setUserPicture(user.picture);
-          setNickname(user.nickname);
           setEmail(user.email);
+          if (!user.nickname) {
+            let fullname = user.first_name + ' ' + user.last_name;
+            setUserFullName(fullname);
+          } else {
+            setUserFullName(user.nickname);
+          }
+
           const response = await axios.get(
             'http://localhost:3000/userPosts?email=' + user.email
           );
@@ -40,7 +46,7 @@ export default function Profile() {
       <div className='profileWrapper'>
         <div className='profile-left'>
           <img src={userPicture} />
-          <div id='userNickname'>Name: {nickname}</div>
+          <div id='userNickname'>Name: {userFullName}</div>
           <div id='userEmail'>Email: {email}</div>
           <div className='profileBtnContainer'>
             <button

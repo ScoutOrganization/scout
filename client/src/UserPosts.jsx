@@ -14,7 +14,7 @@ export default function UserPosts({ userPosts }) {
   }
 
   async function updateDescription(val) {
-    await axios.post('http://localhost:3000/userPosts', {
+    await axios.post('http://localhost:3000/updateDescription', {
       data: { item_description: val },
     });
   }
