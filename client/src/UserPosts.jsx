@@ -1,10 +1,12 @@
 import React from 'react';
-import '../public/styles/post.scss';
+import '../public/styles/userPosts.scss';
+import {RiDeleteBin5Fill} from 'react-icons/ri'
 
-export default function Post({posts}) {
+
+export default function UserPosts({userPosts}) {
   return (
     <>
-    {posts.map((post) => {
+    {userPosts.map((post) => {
       const {
         email,
         first_name,
@@ -15,12 +17,13 @@ export default function Post({posts}) {
         _id,
       } = post
       return (
-        <div className='postWrapper' key={_id}>
-          Full Name: {(first_name + ' ' + last_name)} <br />
+        <div className='userPostWrapper' key={_id}>
+          Full Name: {(first_name, last_name)} <br />
           Item Lost: {item_lost} <br />
           Location: {location} <br />
           Item Description: {item_description} <br />
-          Contact: {email}
+          Contact: {email} <br />
+          <RiDeleteBin5Fill size={30} color={'#313614'} />
         </div>
       )
     })}
