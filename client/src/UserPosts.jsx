@@ -1,15 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import '../public/styles/userPosts.scss';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
+import { RiContactsBookLine, RiDeleteBin5Fill } from 'react-icons/ri';
 import axios from 'axios';
-// import { useAuth0 } from '@auth0/auth0-react';
+import EdiText from 'react-editext';
 
 export default function UserPosts({ userPosts }) {
-  async function handleFoundItem(id) {}
+  const [currentID, setCurrentID] = useState('');
+
   async function handleDeletePost(postID) {
     await axios.delete('http://localhost:3000/userPosts', {
       data: { postID: postID },
     });
+  }
+
+  async function updateDescription(val, postID) {
+    try {
+      const requestBody = {
+        description: val,
+        postID: postID,
+      };
+      console.log('hit');
+      await axios.post('http://localhost:3000/updateDescription', requestBody);
+    } catch (err) {
+      console.log('could not make edit');
+    }
   }
 
   return (
@@ -27,12 +41,21 @@ export default function UserPosts({ userPosts }) {
         return (
           <div className='userPostWrapper' key={_id}>
             Full Name: {first_name + ' ' + last_name} <br />
-            Item Lost: {item_lost} <br />
-            Location: {location} <br />
-            Item Description: {item_description} <br />
             Contact: {email} <br />
+            Location: {location} <br />
+            Item Lost: {item_lost} <br />
+            Item Description:
+            <EdiText
+              type='text'
+              value={item_description}
+              onSave={(value) => {
+                updateDescription(value, _id);
+              }}
+            />
+            <br />
             <div className='buttonContainer'>
-              <button id='foundBtn'
+              <button
+                id='foundBtn'
                 onClick={() => {
                   handleDeletePost(_id);
                 }}
