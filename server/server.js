@@ -38,10 +38,14 @@ app.delete('/userPosts', postController.deletePost, (req, res, next) => {
   return res.status(200).json(res.locals);
 });
 
-app.put('/updateStatus', postController.updateStatus, (req, res, next) => {
-  return res.status(200).json(res.locals);
-  u;
-});
+app.put(
+  '/updateDescription',
+  postController.updateDescription,
+  (req, res, next) => {
+    return res.status(200).json(res.locals);
+    u;
+  }
+);
 
 // catch-all error handler
 app.get('*', (req, res) => {
