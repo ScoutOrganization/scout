@@ -1,7 +1,7 @@
-import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
-import Landing from '../Landing'; 
+// import React from 'react';
+// import '@testing-library/jest-dom/extend-expect';
+// import { render, screen } from '@testing-library/react';
+// import Landing from '../Landing'; 
 
 
 // should render a button with the text "get started" if the user is not logged in.
