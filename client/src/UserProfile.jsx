@@ -42,24 +42,26 @@ export default function Profile() {
           <img src={userPicture} />
           <div id='userNickname'>Name: {nickname}</div>
           <div id='userEmail'>Email: {email}</div>
-          <button
-            className='profileBtns'
-            type='button'
-            onClick={() => {
-              history.push('/createPost');
-            }}
-          >
-            CREATE POST
-          </button>
-          <button
-            className='profileBtns'
-            type='button'
-            onClick={() => {
-              history.push('/bulletin');
-            }}
-          >
-            BULLETIN BOARD
-          </button>
+          <div className='profileBtnContainer'>
+            <button
+              className='profileBtns'
+              type='button'
+              onClick={() => {
+                history.push('/createPost');
+              }}
+            >
+              CREATE POST
+            </button>
+            <button
+              className='profileBtns'
+              type='button'
+              onClick={() => {
+                history.push('/bulletin');
+              }}
+            >
+              BULLETIN BOARD
+            </button>
+          </div>
         </div>
         <div className='profile-right'>
           <UserPosts userPosts={userPosts} />
