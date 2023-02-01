@@ -1,0 +1,25 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-left {
+  font-family: 'Montserrat', sans-serif;
+  margin: 1rem;
+  grid-area: details;
+  text-align: center;
+  line-height: 3rem;
+}
+
+.profile-right {
+  border: solid;
+  grid-area: userPosts;
+  width: 50vw;
+  height: 100vh;
+}
+
+.profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas: 'details userPosts';
+}

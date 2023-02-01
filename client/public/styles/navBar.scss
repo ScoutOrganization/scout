@@ -21,7 +21,34 @@
   padding-left: 3rem;
 }
 
+.right {
+  display: flex;
+  float: right;
+  padding-right: 2rem;
+}
+
 #logo {
   height: 5rem;
   width: auto;
+}
+
+#logout {
+  margin: 1rem; 
+}
+
+#userPhoto {
+  margin: 1rem; 
+  width: 3vw; 
+  height: auto; 
+}
+
+#profileBtn {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+  overflow-wrap: anywhere;
+  text-align: left;
 }
