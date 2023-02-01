@@ -18,6 +18,22 @@ postController.getAllPosts = async (req, res, next) => {
   }
 };
 
+postController.filterPosts = async (req, res, next) => {
+  try {
+    const { location } = req.query;
+    const values = [location];
+    const filterPostsQuery = 'SELECT * FROM posts WHERE(location=$1)';
+    const { rows } = await db.query(filterPostsQuery, values);
+    res.locals.filteredPosts = rows;
+    return next();
+  } catch (err) {
+    return next({
+      log: 'Error found in postController.filterPosts',
+      message: `Error when trying to filter posts from DB: ${err}`,
+    });
+  }
+};
+
 postController.createPost = async (req, res, next) => {
   try {
     //deconstruct information from req.body
@@ -74,7 +90,7 @@ postController.deletePost = async (req, res, next) => {
     //check to see that the username of the user currently trying to delete the post, matches user
     //who created that post
     const { postID } = req.body;
-    console.log('id in server', postID); 
+    console.log('id in server', postID);
     const deletePostQuery = {
       text: `DELETE FROM posts WHERE(_id = $1)`,
       values: [postID],
@@ -89,29 +105,29 @@ postController.deletePost = async (req, res, next) => {
   }
 };
 
-postController.updateStatus = async(req, res, next) => {
+postController.updateStatus = async (req, res, next) => {
   try {
     const { _id } = req.body;
-    //first check current status of _id row element 
-    //if status is true, change it to false, vice vera 
+    //first check current status of _id row element
+    //if status is true, change it to false, vice vera
     const checkStatus = {
       text: `SELECT status FROM posts WHERE(_id = $1)`,
-      values: [_id]
+      values: [_id],
     };
-    const { rows } = await db.query(checkStatus)
+    const { rows } = await db.query(checkStatus);
     const statusUpdateQuery = {
       text: `UPDATE posts SET status = ${!rows[0].status} WHERE(_id = $1)`,
       values: [_id],
     };
-    await db.query(statusUpdateQuery)
-    res.locals.status = !rows[0].status
-    return next()
-  } catch(err) {
-    return({
+    await db.query(statusUpdateQuery);
+    res.locals.status = !rows[0].status;
+    return next();
+  } catch (err) {
+    return {
       log: 'Error found in postController.updateStatus',
-      message: `Error when trying to update status: ${err}`
-    })
+      message: `Error when trying to update status: ${err}`,
+    };
   }
-}
+};
 
 module.exports = postController;
