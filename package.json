@@ -7,7 +7,7 @@
         "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/server.js\"",
         "build": "NODE_ENV=production webpack --config ./webpack.config.js",
         "start": "cross-env NODE_ENV=production nodemon npm run ./server/server.js",
-        "test": "jest --verbose"
+        "test": " jest --verbose"
     },
     "author": "Sakura Akiyama-Bowden. Juliana Morrelli. Arthur Huynh. Jacob Martin. Josh Paynter",
     "license": "MIT",
